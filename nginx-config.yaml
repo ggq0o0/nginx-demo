@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-custom-config    # 配置的名称，后面要用
+data:
+  default.conf: |              # 键名：通常是default.conf
+    server {
+        listen       80;
+        server_name  _;        # 监听所有域名
+
+        # 这里配置你的路由规则
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+
+        # 示例：配置一个健康检查接口
+        location /health {
+            return 200 "healthy\n";
+            add_header Content-Type text/plain;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
