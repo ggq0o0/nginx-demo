@@ -49,7 +49,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: nlb
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
     # 如果需要固定公网 IP，预先创建 EIP 并绑定
-    service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-xxxxxxxx
+    #service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-xxxxxxxx
 spec:
   selector:
     app: nginx
